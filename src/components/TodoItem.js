@@ -3,8 +3,8 @@ import { AiFillEdit } from "react-icons/ai";
 import { IoCheckmarkDoneSharp, IoClose } from "react-icons/io5";
 
 const TodoItem = (props) => {
+ 
   const { item, updateTodo, removeTodo, completeTodo } = props;
-
   const inputRef = useRef(true);
 
   const changeFocus = () => {
@@ -19,6 +19,9 @@ const TodoItem = (props) => {
       inputRef.current.disabled = true;
     }
   };
+
+  
+
   return (
     <li
       key={item.id}
@@ -39,8 +42,6 @@ const TodoItem = (props) => {
         </button>
         {item.completed === false && (
           <button
-            whileHover={{ scale: 1.4 }}
-            whileTap={{ scale: 0.9 }}
             style={{ color: "green" }}
             onClick={() => completeTodo(item.id)}
           >

@@ -45,8 +45,6 @@ const Todos = (props) => {
       />
 
       <button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
         className="add-btn"
         onClick={() => add()}
       >

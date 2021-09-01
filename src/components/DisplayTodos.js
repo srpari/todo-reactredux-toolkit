@@ -29,22 +29,16 @@ const DisplayTodos = (props) => {
     <div className="displaytodos">
       <div className="buttons">
         <button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
           onClick={() => setSort("active")}
         >
           Active
         </button>
         <button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
           onClick={() => setSort("completed")}
         >
           Completed
         </button>
         <button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
           onClick={() => setSort("all")}
         >
           All
