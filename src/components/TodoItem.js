@@ -2,9 +2,10 @@ import React, { useRef } from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { IoCheckmarkDoneSharp, IoClose } from "react-icons/io5";
 
-const TodoItem = (props) => {
+const TodoItem = ({item}) => {
  
-  const { item, updateTodo, removeTodo, completeTodo } = props;
+
+  // const { item, updateTodo, removeTodo, completeTodo } = props;
   const inputRef = useRef(true);
 
   const changeFocus = () => {
@@ -12,13 +13,13 @@ const TodoItem = (props) => {
     inputRef.current.focus();
   };
 
-  const update = (id, value, e) => {
-    if (e.which === 13) {
-      //here 13 is key code for enter key
-      updateTodo({ id, item: value });
-      inputRef.current.disabled = true;
-    }
-  };
+  // const update = (id, value, e) => {
+  //   if (e.which === 13) {
+  //     //here 13 is key code for enter key
+  //     updateTodo({ id, item: value });
+  //     inputRef.current.disabled = true;
+  //   }
+  // };
 
   
 
@@ -31,7 +32,7 @@ const TodoItem = (props) => {
         ref={inputRef}
         disabled={inputRef}
         defaultValue={item.item}
-        onKeyPress={(e) => update(item.id, inputRef.current.value, e)}
+        // onKeyPress={(e) => update(item.id, inputRef.current.value, e)}
       />
       <div className="btns">
         <button
@@ -43,14 +44,14 @@ const TodoItem = (props) => {
         {item.completed === false && (
           <button
             style={{ color: "green" }}
-            onClick={() => completeTodo(item.id)}
+            // onClick={() => completeTodo(item.id)}
           >
             <IoCheckmarkDoneSharp />
           </button>
         )}
         <button
           style={{ color: "red" }}
-          onClick={() => removeTodo(item.id)}
+          // onClick={() => removeTodo(item.id)}
         >
           {" "}
           <IoClose />

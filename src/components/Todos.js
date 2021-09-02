@@ -1,22 +1,23 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
 import { addTodos } from "../redux/reducer";
 import { GoPlus } from "react-icons/go";
+import { useDispatch } from "react-redux";
 
-const mapStateToProps = (state) => {
-  return {
-    todos: state,
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     todos: state,
+//   };
+// };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addTodo: (obj) => dispatch(addTodos(obj)),
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     addTodo: (obj) => dispatch(addTodos(obj)),
+//   };
+// };
 
 const Todos = (props) => {
   const [todo, setTodo] = useState("");
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setTodo(e.target.value);
@@ -25,14 +26,24 @@ const Todos = (props) => {
   const add = () => {
     if (todo === "") {
       alert("Input is Empty");
-    } else {
-      props.addTodo({
-        id: Math.floor(Math.random() * 1000),
-        item: todo,
-        completed: false,
-      });
-      setTodo("");
     }
+    //  else {
+      //  props.addTodo({
+      //   id: Math.floor(Math.random() * 1000),
+      //   item: todo,
+      //   completed: false,
+      // });
+
+      dispatch(
+        addTodos({
+          id: Math.floor(Math.random() * 1000),
+          item: todo,
+          completed: false,
+          // uID: new Date().getTime(),
+        })
+      );
+      setTodo("");
+    // }
   };
   //console.log("props from store", props);
   return (
@@ -42,7 +53,7 @@ const Todos = (props) => {
         onChange={(e) => handleChange(e)}
         className="todo-input"
         value={todo}
-      />
+      />  
 
       <button
         className="add-btn"
@@ -54,5 +65,7 @@ const Todos = (props) => {
     </div>
   );
 };
-//we can use connect method to connect this component with redux store
-export default connect(mapStateToProps, mapDispatchToProps)(Todos);
+
+
+
+export default Todos;
